@@ -20,36 +20,36 @@ const postDeportes = async (req, res) => {
   }
 };
 const putDeportes = async(req,res)=>{
-  try {
+   try {
    
-    const {id} = req.params;
+     const {id} = req.params;
    
-    const putDeportes = new Deportes(req.body);
+     const putDeportes = new Deportes(req.body);
  
-    putDeportes._id=id
+     putDeportes._id=id
    
-    const updatedDeportes = await Deportes.findByIdAndUpdate(id,putDeportes,{new:true} );
+     const updatedDeportes = await Deportes.findByIdAndUpdate(id,putDeportes,{new:true} );
   
-    if (!updatedDeportes) {
-      return res.status(404).json({message:" no tenemos este deporte con ese ID"})
-    }
-    return res.status(200).json(updatedDeportes)
+     if (!updatedDeportes) {
+       return res.status(404).json({message:" no tenemos este deporte con ese ID"})
+     }
+     return res.status(200).json(updatedDeportes)
 
-  } catch (error) {
-    return res.status(500).json(error)
-  }
-}
-const deleteDeportes= async(req,res)=>{
-try {
-  const {id} = req.params;
-  const deleteDeportes = await Deportes.findByIdAndDelete(id);
-  if (!deleteDeportes) {
-    return res.status(404).json({message:"No tenemos ningún deporte con ese ID"})
-  }
-  return res.status(200).json(deleteDeportes)
+   } catch (error) {
+     return res.status(500).json(error)
+   }
+ }
+ const deleteDeportes= async(req,res)=>{
+ try {
+   const {id} = req.params;
+   const deleteDeportes = await Deportes.findByIdAndDelete(id);
+   if (!deleteDeportes) {
+     return res.status(404).json({message:"No tenemos ningún deporte con ese ID"})
+   }
+      return res.status(200).json(deleteDeportes)
 
-} catch (error) {
-  return res.status(500).json(error)
-}
-}
+ } catch (error) {
+   return res.status(500).json(error)
+ }
+ }
 module.exports = { getDeportes, postDeportes, putDeportes,deleteDeportes };

@@ -78,7 +78,7 @@ mongoose
   .catch((error) => console.log("error borrando deportes", error))
   .then(async () => {
     const deportesMap = arrayDeportes.map((deportes) => new Deportes(deportes));
-    await Deportes.insertMany(deporteMap);
+    await Deportes.insertMany(deportesMap);
     console.log("Deportes insertados correctamente");
   })
   .catch((error) => console.log("error insertando deportes", error))
